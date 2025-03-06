@@ -1,0 +1,62 @@
+<nav class="navbar">
+    <div class="nav-content">
+    <a href="/">
+    <div class="nav-title text">
+        High Voltage
+    </div>
+    </a>
+    <div class="nav-buttons">
+        <a class="nav-button text">
+            <i class="icon">rss_feed</i>
+            Blog
+        </a>
+        <a class="nav-button text">
+            <i class="icon">dual_screen</i>
+            Contact
+        </a>
+        <a class="nav-button text" id="themeToggle">Test</a>
+    </div>
+</div>
+</nav>
+
+<style>
+    .navbar {
+        position: fixed;
+        width: 100vw;
+        height: 2.5rem;
+        padding: 1rem;
+        background-color: var(--fg-colored);
+        margin: 0 auto;
+    }
+    .nav-title {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--accent-red);
+    }
+    .nav-content {
+        width: calc(100vw - 2rem);
+        position: absolute;
+        display: flex;
+        height: 2.5rem;
+        justify-content: left;
+        align-items: center;
+        z-index: 99;
+    }
+    .nav-buttons {
+        display: flex;
+        margin-left: auto;
+        justify-content: right;
+        gap: 1rem;
+    }
+    .nav-button {
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+    }
+    .icon {
+        margin-right: .25rem;
+        font-size: 1.25rem;
+    }
+
+
+</style>
