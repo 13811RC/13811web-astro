@@ -13,6 +13,7 @@ import Header from "../components/Header.astro"
 	</head>
     <body>
         <Header/>
+        <slot/>
     </body>
 
     <script is:inline>
@@ -37,10 +38,12 @@ import Header from "../components/Header.astro"
       
         const handleToggleClick = () => {
           const element = document.documentElement;
+          const icon = document.getElementById("themeIcon")
           element.classList.toggle("dark");
       
           const isDark = element.classList.contains("dark");
           localStorage.setItem("theme", isDark ? "dark" : "light");
+          icon.textContent = isDark ? "dark_mode" : "light_mode";
         }
       
         document.getElementById("themeToggle")?.addEventListener("click", handleToggleClick);

@@ -1,32 +1,48 @@
-<nav class="navbar">
-    <div class="nav-content">
+---
+interface Props {
+    currentPage: string;
+}
+
+const currentPage = Astro.url.pathname;
+console.log(currentPage);
+---
+
+<header class="navbar">
+    <nav class="nav-content">
     <a href="/">
     <div class="nav-title text">
         High Voltage
     </div>
     </a>
     <div class="nav-buttons">
-        <a class="nav-button text">
-            <i class="icon">rss_feed</i>
+        <a class="nav-button" id="themeToggle">
+            <i class="icon" id="themeIcon">light_mode</i>
+        </a>
+    <a class:list={["nav-button"]} href="/blog">
+        <i class="icon">rss_feed</i>
+        <div class="text">
             Blog
-        </a>
-        <a class="nav-button text">
-            <i class="icon">dual_screen</i>
-            Contact
-        </a>
-        <a class="nav-button text" id="themeToggle">Test</a>
+        </div>
+    </a>
+    <a class="nav-button" href="/contact">
+        <i class="icon">dual_screen</i>
+        <div class="text">
+            Contact Us
+        </div>
+    </a>
     </div>
-</div>
 </nav>
+</header>
 
 <style>
     .navbar {
         position: fixed;
+        max-width: 100vw;
         width: 100vw;
         height: 2.5rem;
-        padding: 1rem;
+        padding: 0.75rem 0;
         background-color: var(--fg-colored);
-        margin: 0 auto;
+        margin: 0;
     }
     .nav-title {
         font-weight: 700;
@@ -34,24 +50,42 @@
         color: var(--accent-red);
     }
     .nav-content {
-        width: calc(100vw - 2rem);
+        width: 100vw;
         position: absolute;
         display: flex;
         height: 2.5rem;
-        justify-content: left;
+        justify-content: space-around;
         align-items: center;
         z-index: 99;
     }
     .nav-buttons {
         display: flex;
-        margin-left: auto;
-        justify-content: right;
+        flex-direction: row-reverse;
         gap: 1rem;
     }
     .nav-button {
         font-weight: 600;
         display: flex;
         align-items: center;
+        .text, .icon{
+            color: var(--accent-red);
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.2s color;
+        }
+        &.active {
+            .text, .icon {
+                color: var(--accent-yellow);
+            }
+        }
+    }
+    .nav-button:hover {
+        .text, .icon{
+            color: var(--accent-yellow)
+        };
+        .text {
+            text-decoration: underline;
+        }
     }
     .icon {
         margin-right: .25rem;
