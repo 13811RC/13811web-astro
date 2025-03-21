@@ -2,13 +2,15 @@
 interface Props {
     id: string,
     placeholder?: string,
+    descriptor?: string,
     width?: string,
     fontsize?: number
 }
-const {id, placeholder = "Enter text here...", width, fontsize = 1} = Astro.props;
+const {id, placeholder = "Enter text here...", descriptor = "Form Element", width, fontsize = 1} = Astro.props;
 const remFont = fontsize + "rem";
 ---
-<input id={id} placeholder={placeholder} class="text">
+<label for={id} class="text">{descriptor}</label>
+<input id={id} name={id} placeholder={placeholder} class="text">
 </input>
 
 <style define:vars={{remFont, width}}>
