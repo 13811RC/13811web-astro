@@ -1,10 +1,20 @@
 ---
 import Main from "../layouts/Main.astro"
-import Content from "../components/Content.astro"
+import Content from "@components/Content.astro"
+import Button from "@components/ui/Button.astro"
+import InputForm from "@components/ui/InputForm.astro"
+import BigButton from "@components/ui/BigButton.astro"
+import SmallButton from "@components/ui/SmallButton.astro"
 ---
 
 <Main>
     <Content>
         <h1 class="text">There will be a banner thing here</h1>
+        <div>
+            <SmallButton icon="rss_feed">small epic button</SmallButton>
+            <Button href="/blog">epic button</Button>
+            <BigButton icon="phone" disabled>less epic button</BigButton>
+        </div>
+        <InputForm id="tempForm" width="100%" placeholder="Awesome form component"/>
     </Content>
 </Main>

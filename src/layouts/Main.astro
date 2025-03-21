@@ -1,6 +1,6 @@
 ---
 import "../styles/universal.css"
-import Header from "../components/Header.astro"
+import Header from "@components/Header.astro"
 ---
 
 <html lang="en">
@@ -12,7 +12,7 @@ import Header from "../components/Header.astro"
 		<title>Astro</title>
 	</head>
     <body>
-        <Header/>
+        <Header currentPage={Astro.url.pathname}/>
         <slot/>
     </body>
 

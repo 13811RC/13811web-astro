@@ -1,0 +1,38 @@
+---
+interface Props {
+    id: string,
+    placeholder?: string,
+    width?: string,
+    fontsize?: number
+}
+const {id, placeholder = "Enter text here...", width, fontsize = 1} = Astro.props;
+const remFont = fontsize + "rem";
+---
+<input id={id} placeholder={placeholder} class="text">
+</input>
+
+<style define:vars={{remFont, width}}>
+    input {
+        padding: .5rem 1rem;
+        width: var(--width);
+        margin: .5rem 0;
+        border: none;
+        border-bottom: 4px solid var(--accent-red);
+        border-radius: .25rem .25rem 0 0;
+        background-color: var(--far-bg);
+        font-size: var(--remFont);
+        box-shadow:0 2px 2px 0 var(--far-bg);
+        transition: all 0.3s;
+    }
+    input:hover {
+        background-color: color-mix(in oklab, var(--far-bg) 85%, black 15%);
+    }
+    input:focus {
+        background-color: var(--fg-colored);
+        outline: none;
+    }
+    input:focus::placeholder {
+            color: white;
+            opacity: 80%;
+    }
+</style>

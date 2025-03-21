@@ -1,0 +1,67 @@
+---
+interface Props {
+    icon?: string,
+    color?: string,
+    href?: string,
+    disabled?: boolean
+}
+
+var { icon = "star", color = "var(--accent-red)", href, disabled } = Astro.props;
+if (disabled) {
+    color = "var(--far-bg)"
+}
+---
+<button style={color ? `background-color: ${color}`: ""} class={disabled ? "disabled" : ""}>
+    {href ?
+        <a class="button-content" href={href}>
+        <i class="icon">{icon}</i>
+        <div class="text"><slot/></div>
+        </a>
+        :
+        <div class="button-content">
+        <i class="icon text">{icon}</i>
+        <div class="text"><slot/></div>
+        </div>
+    }
+</button>
+
+<style define:vars={{color}}>
+    button {
+        margin: 0;
+        padding: 0;
+        border: 2px solid color-mix(in oklab, var(--color) 95%, black 5%);
+        border-radius: .75rem;
+        cursor: pointer;
+        box-shadow:  0 2px 0 0 color-mix(in oklab, var(--color) 85%, black 15%), 0 4px 2px 0 var(--far-bg);
+        transition: all 0.3s;
+        
+        &.disabled {
+            background-color: var(--fg);
+            cursor: auto;
+            .text {
+                opacity: 0.5;
+                color
+            }
+        }
+    }
+    button:hover {
+        box-shadow: none;
+        background-color: color-mix(in oklab, var(--color) 85%, black 15%) !important;
+        border: 2px solid color-mix(in oklab, var(--color) 90%, black 10%);
+        transform: translateY(2px);
+        &.disabled {
+            background-color: var(--far-bg) !important;
+            transform: none;
+            box-shadow:  0 2px 0 0 color-mix(in oklab, var(--color) 85%, black 15%), 0 4px 2px 0 var(--far-bg);
+        }
+    }
+    .button-content {
+        padding: 0.25rem 0.5rem;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        div.text {
+            font-size: 1rem;
+        }
+    }
+</style>
