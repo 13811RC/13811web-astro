@@ -1,4 +1,4 @@
-button {
+button, input[type="submit"] {
     margin: 0;
     padding: 0;
     border: 2px solid color-mix(in oklab, var(--color) 95%, black 5%);
@@ -17,7 +17,7 @@ button {
         }
     }
 }
-button:hover {
+button:hover, input[type="submit"]:hover {
     box-shadow: none;
     background-color: color-mix(in oklab, var(--color) 85%, black 15%) !important;
     border: 2px solid color-mix(in oklab, var(--color) 90%, black 10%);
@@ -27,6 +27,11 @@ button:hover {
         transform: none;
         box-shadow:  0 2px 0 0 color-mix(in oklab, var(--color) 85%, black 15%), 0 4px 2px 0 var(--far-bg);
     }
+}
+input[type="submit"] {
+    padding: .5rem 1rem;
+    color: var(--textColor);
+    font-size: 1rem;
 }
 .button-content {
     padding: .5rem 1rem;

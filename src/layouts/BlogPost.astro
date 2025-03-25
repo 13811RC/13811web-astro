@@ -1,6 +1,7 @@
 ---
 import Content from '@components/Content.astro';
 import Main from './Main.astro';
+import type { arrayOutputType } from 'astro:schema';
 
 interface Props {
   frontmatter: {
@@ -9,6 +10,7 @@ interface Props {
     pubDate: string;
     updatedDate?: string;
     heroImage?: string;
+    tags?: string[];
   };
 }
 
@@ -40,6 +42,13 @@ const { frontmatter } = Astro.props;
                 </div>
               )}
             </div>
+            {frontmatter.tags &&
+             <div class="tags">
+              {frontmatter.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+            }
             <hr />
           </div>
           <slot />
@@ -67,5 +76,19 @@ const { frontmatter } = Astro.props;
     .last-updated-on .icon {
         margin-left: .05rem;
         margin-right: .1rem;
+    }
+    .tags {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .tag {
+      padding: 0.25rem 0.5rem;
+      background-color: var(--far-bg);
+      border-radius: 5px;
     }
 </style>

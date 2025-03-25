@@ -8,7 +8,8 @@
 }
 :root {
     --accent-red: #e70d0d;
-    --accent-yellow: #f7b220;
+    --accent-yellow-dark: #f7b220;
+    --accent-yellow-light: #d8661b;
     --accent-blue: #2084f7;
 
     --far-bg-dark: #222222;
@@ -33,6 +34,7 @@ html.dark {
     --fg: var(--fg-dark);
     --fg-colored: var(--fg-colored-dark);
     --text: var(--text-dark);
+    --accent-yellow: var(--accent-yellow-dark)
 }
 html {
     --far-bg: var(--far-bg-light);
@@ -41,6 +43,23 @@ html {
     --fg: var(--fg-light);
     --text: var(--text-light);
     --fg-colored: var(--fg-colored-light);
+    --accent-yellow: var(--accent-yellow-light)
+}
+
+html.dark .astro-code {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  border: 1px solid color-mix(in oklab, var(--shiki-dark-bg) 80%, black 20%);
+}
+.astro-code {
+    border: 1px solid color-mix(in oklab, #FAFAFA 80%, black 20%);
+}
+html.dark .astro-code span {
+    color: var(--shiki-dark) !important;
+}
+.astro-code span, .astro-code {
+    transition: all 0.3s;
+    
 }
 
 body {
@@ -63,6 +82,13 @@ a.link {
 }
 a.link:hover {
     text-decoration: underline;
+}
+
+hr {
+    border: none;
+    border-bottom: 1px solid var(--fg);
+    border-top: 1px solid var(--far-bg);
+    margin: 1rem;
 }
 
 .text {
@@ -89,4 +115,16 @@ a.text {
 a.text:hover {
     text-decoration: underline;
     color: var(--accent-yellow);
+}
+.astro-code {
+    padding: 1rem;
+    width: fit-content;
+    max-width: 700px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .astro-code {
+        width: calc(100% - 2rem);
+    }
 }

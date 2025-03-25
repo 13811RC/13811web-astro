@@ -25,23 +25,9 @@ if (color) {
     textColor = lightDarkContrast(color, lightTextColor, darkTextColor);
 }
 ---
-<button style={color ? `background-color: ${color}`: ""} class={disabled ? "disabled" : ""}>
-    {href ?
-        <a class="button-content" href={href}>
-            {icon &&
-            <i class="icon">{icon}</i>
-            }
-        <div class="text"><slot/></div>
-        </a>
-        :
-        <div class="button-content">
-                    {icon &&
-            <i class="icon">{icon}</i>
-            }
-        <div class="text"><slot/></div>
-        </div>
-    }
-</button>
+<input class="text" type="submit" style={color ? `background-color: ${color}`: ""} class={disabled ? "disabled" : ""}>
+
+</input>
 
 <style define:vars={{color, textColor}}>
 </style>

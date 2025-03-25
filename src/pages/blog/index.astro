@@ -4,7 +4,9 @@ import Main from "../../layouts/Main.astro";
 import Content from "../../components/Content.astro";
 import BlogItem from "../../components/blog/BlogItem.astro";
 
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection('blog', ({data}) => {
+    return data.draft !== true;
+});
 const sortedPosts = allPosts.sort(
   (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => 
     new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
