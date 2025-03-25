@@ -21,20 +21,20 @@ const remFont = fontsize + "rem";
         border: none;
         border-bottom: 4px solid var(--accent-red);
         border-radius: .25rem .25rem 0 0;
-        background-color: var(--far-bg);
+        background-color: var(--subtle-bg);
         font-size: var(--remFont);
-        box-shadow:0 2px 2px 0 var(--far-bg);
+        box-shadow: 0 2px 2px 0 var(--colored-bg);
         transition: all 0.3s;
     }
     input:hover {
-        background-color: color-mix(in oklab, var(--far-bg) 85%, black 15%);
+        background-color: var(--far-bg);
     }
     input:focus {
         background-color: var(--fg-colored);
         outline: none;
     }
     input:focus::placeholder {
-            color: white;
+            color: var(--text);
             opacity: 80%;
     }
 </style>

@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+    post: CollectionEntry<'blog'>;
+}
+const { post } = Astro.props;
+---
+
+<li class="post-item text">
+    <a href={`/blog/${post.slug}/`}>
+        <h2 class="post-title">{post.data.title}</h2>
+        <div class="post-date">
+            {new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            })}
+        </div>
+        {post.data.description && (
+            <div class="post-description">{post.data.description}</div>
+        )}
+    </a>
+</li>
+
+<style>
+    .post-item {
+        display: block;
+        padding: 1rem;
+        background-color: var(--subtle-bg);
+        color: var(--text);
+        border-radius: .5rem;
+        border: 1px solid var(--far-bg);
+    }
+    .post-item:hover {
+        background-color: var(--far-bg);
+    }
+    .post-title {
+        font-size: 1.5rem;
+        margin: 0;
+        margin-bottom: .25rem;
+    }
+    .post-date {
+        font-size: 0.875rem;
+        opacity: 0.7;
+        margin-bottom: .5rem;
+    }
+</style>

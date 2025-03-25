@@ -12,9 +12,9 @@ interface Props {
     </div>
     </a>
     <div class="nav-buttons">
-        <a class="nav-button" id="themeToggle">
+        <div class="nav-button" id="themeToggle">
             <i class="icon" id="themeIcon">light_mode</i>
-        </a>
+        </div>
     <a class:list={["nav-button"]} href="/blog">
         <i class="icon">rss_feed</i>
         <div class="text">
@@ -22,7 +22,7 @@ interface Props {
         </div>
     </a>
     <a class="nav-button" href="/contact">
-        <i class="icon">dual_screen</i>
+        <i class="icon">local_post_office</i>
         <div class="text">
             Contact Us
         </div>
@@ -90,6 +90,9 @@ interface Props {
     .icon {
         margin-right: .25rem;
         font-size: 1.25rem;
+    }
+    #themeIcon {
+        font-size: 1.5rem;
     }
 
 

@@ -1,0 +1,43 @@
+button {
+    margin: 0;
+    padding: 0;
+    border: 2px solid color-mix(in oklab, var(--color) 95%, black 5%);
+    border-radius: 1rem;
+    cursor: pointer;
+    box-shadow:  0 2px 0 0 color-mix(in oklab, var(--color) 85%, black 15%), 0 4px 2px 0 var(--far-bg);
+    transition: all 0.3s;
+    
+    &.disabled {
+        background-color: var(--fg);
+        cursor: auto;
+        .text {
+            color: var(--text) !important;
+            opacity: 0.5;
+            transition: color 0.3s;
+        }
+    }
+}
+button:hover {
+    box-shadow: none;
+    background-color: color-mix(in oklab, var(--color) 85%, black 15%) !important;
+    border: 2px solid color-mix(in oklab, var(--color) 90%, black 10%);
+    transform: translateY(2px);
+    &.disabled {
+        background-color: var(--far-bg) !important;
+        transform: none;
+        box-shadow:  0 2px 0 0 color-mix(in oklab, var(--color) 85%, black 15%), 0 4px 2px 0 var(--far-bg);
+    }
+}
+.button-content {
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    div.text {
+        color: var(--textColor);
+        font-size: 1rem;
+    }
+    i.icon {
+        color: var(--textColor);
+    }
+}

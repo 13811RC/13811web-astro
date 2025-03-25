@@ -1,6 +1,7 @@
 ---
 import "../styles/universal.css"
 import Header from "@components/Header.astro"
+import Footer from "@components/Footer.astro"
 ---
 
 <html lang="en">
@@ -13,7 +14,10 @@ import Header from "@components/Header.astro"
 	</head>
     <body>
         <Header currentPage={Astro.url.pathname}/>
-        <slot/>
+        <main class="content">
+            <slot/>
+        </main>
+        <Footer/>
     </body>
 
     <script is:inline>
@@ -30,8 +34,10 @@ import Header from "@components/Header.astro"
       
         if (theme === 'light') {
           document.documentElement.classList.remove('dark');
+          document.getElementById("themeIcon").textContent = "light_mode";
         } else {
           document.documentElement.classList.add('dark');
+          document.getElementById("themeIcon").textContent = "dark_mode";
         }
       
         window.localStorage.setItem('theme', theme);
@@ -48,4 +54,10 @@ import Header from "@components/Header.astro"
       
         document.getElementById("themeToggle")?.addEventListener("click", handleToggleClick);
       </script>
+
+    <style>
+        .content {
+            flex: 1;
+        }
+    </style>
 </html>

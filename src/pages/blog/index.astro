@@ -1,10 +1,34 @@
 ---
-import Main from "../../layouts/Main.astro"
-import Content from "../../components/Content.astro"
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Main from "../../layouts/Main.astro";
+import Content from "../../components/Content.astro";
+import BlogItem from "../../components/blog/BlogItem.astro";
+
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort(
+  (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => 
+    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
 ---
 
-<Main>
+<Main title="Blog | 13811 Web">
     <Content>
         <h1 class="text">13811 Blog</h1>
+        
+        <section>
+            <ul class="post-list">
+                {sortedPosts.map((post: CollectionEntry<'blog'>) => (
+                    <BlogItem post={post}/>
+                ))}
+            </ul>
+        </section>
     </Content>
 </Main>
+
+<style>
+    .post-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+</style>
