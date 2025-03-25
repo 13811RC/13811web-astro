@@ -12,12 +12,14 @@
     --accent-blue: #2084f7;
 
     --far-bg-dark: #222222;
+    --subtle-bg-dark: #313131;
     --bg-dark: #363636;
     --fg-dark: #464646;
     --fg-colored-dark: #442323; 
     --text-dark: #f1e9e9;
 
     --far-bg-light: #c0c0c0;
+    --subtle-bg-light: #cccccc;
     --bg-light: #d4d4d4;
     --fg-light: #ebebeb;
     --fg-colored-light: #dbc7c7;
@@ -26,6 +28,7 @@
 
 html.dark {
     --far-bg: var(--far-bg-dark);
+    --subtle-bg: var(--subtle-bg-dark);
     --bg: var(--bg-dark);
     --fg: var(--fg-dark);
     --fg-colored: var(--fg-colored-dark);
@@ -33,6 +36,7 @@ html.dark {
 }
 html {
     --far-bg: var(--far-bg-light);
+    --subtle-bg: var(--subtle-bg-light);
     --bg: var(--bg-light);
     --fg: var(--fg-light);
     --text: var(--text-light);
@@ -44,14 +48,21 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color 0.3s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
     text-decoration: none;
     cursor: pointer;
-    &:hover {
-        text-decoration: hover;
-    }
+    color: var(--text);
+}
+a.link {
+    color: var(--accent-blue);
+}
+a.link:hover {
+    text-decoration: underline;
 }
 
 .text {

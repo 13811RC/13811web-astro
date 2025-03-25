@@ -1,0 +1,71 @@
+---
+import Content from '@components/Content.astro';
+import Main from './Main.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+    pubDate: string;
+    updatedDate?: string;
+    heroImage?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Main title={frontmatter.title} description={frontmatter.description}>
+<Content>
+    <article>
+        <div class="hero-image">
+          {frontmatter.heroImage && <img src={frontmatter.heroImage} alt="" />}
+        </div>
+        <div class="prose text">
+          <div class="title">
+            <h1>{frontmatter.title}</h1>
+            <div class="date">
+              Published on {new Date(frontmatter.pubDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+              {frontmatter.updatedDate && (
+                <div class="last-updated-on">
+                  &bull; <i class="icon" title="Last Updated">update</i>{new Date(frontmatter.updatedDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </div>
+              )}
+            </div>
+            <hr />
+          </div>
+          <slot />
+        </div>
+      </article>
+</Content>
+</Main>
+
+<style>
+    .title h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: .25rem;
+    }
+    .date {
+        font-size: 1rem;
+        text-align: center;
+        opacity: 0.7;
+    }
+    .last-updated-on {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .last-updated-on .icon {
+        margin-left: .05rem;
+        margin-right: .1rem;
+    }
+</style>
