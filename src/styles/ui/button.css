@@ -32,6 +32,10 @@ input[type="submit"] {
     padding: .5rem 1rem;
     color: var(--textColor);
     font-size: 1rem;
+    &.disabled&.text {
+        color: var(--text) !important;
+        opacity: 0.5;
+    }
 }
 .button-content {
     padding: .5rem 1rem;

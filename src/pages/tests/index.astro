@@ -1,0 +1,24 @@
+---
+import Main from "@layouts/Main.astro"
+import Content from "@components/Content.astro"
+import Button from "@ui/buttons/Button.astro"
+import InputForm from "@ui/forms/InputForm.astro"
+import BigButton from "@ui/buttons/BigButton.astro"
+import SmallButton from "@ui/buttons/SmallButton.astro"
+import InputFormSubmit from "@ui/forms/InputFormSubmit.astro"
+import Dropdown from "@components/ui/forms/Dropdown.astro"
+---
+
+<Main>
+    <Content>
+        <h1 class="text">Component testing</h1>
+        <div>
+            <SmallButton icon="rss_feed">small epic button</SmallButton>
+            <Button icon="star" href="/blog" color="#555555">epic button</Button>
+            <BigButton icon="phone" disabled>less epic button</BigButton>
+        </div>
+        <InputForm id="tempForm" width="100%" placeholder="Awesome form component"/>
+        <InputFormSubmit id="submitForm" width="100%" disabled/>
+        <Dropdown id="dropdown" options={[{ value: "dropdown", label: "Dropdown" }, { value: "test2", label: "Test 2"}]}/>
+    </Content>
+</Main>

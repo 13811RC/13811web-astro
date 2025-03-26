@@ -13,6 +13,7 @@
     --accent-blue: #2084f7;
 
     --far-bg-dark: #222222;
+    --far-bg-colored-dark: #2c1f1f;
     --subtle-bg-dark: #313131;
     --bg-dark: #363636;
     --fg-dark: #464646;
@@ -20,6 +21,7 @@
     --text-dark: #f1e9e9;
 
     --far-bg-light: #c0c0c0;
+    --far-bg-colored-light: #c9acac;
     --subtle-bg-light: #cccccc;
     --bg-light: #d4d4d4;
     --fg-light: #ebebeb;
@@ -33,6 +35,7 @@ html.dark {
     --bg: var(--bg-dark);
     --fg: var(--fg-dark);
     --fg-colored: var(--fg-colored-dark);
+    --far-bg-colored: var(--far-bg-colored-dark);
     --text: var(--text-dark);
     --accent-yellow: var(--accent-yellow-dark)
 }
@@ -43,6 +46,7 @@ html {
     --fg: var(--fg-light);
     --text: var(--text-light);
     --fg-colored: var(--fg-colored-light);
+    --far-bg-colored: var(--far-bg-colored-light);
     --accent-yellow: var(--accent-yellow-light)
 }
 

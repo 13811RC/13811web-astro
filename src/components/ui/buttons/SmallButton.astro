@@ -1,0 +1,47 @@
+---
+import { lightDarkContrast } from "@utils/colorContrastChecker";
+import "@styles/ui/button.css";
+
+// This component is used as a stylized button. 
+// Specific colors can be passed in as props, and the text color will be adjusted automatically based upon it.
+
+interface Props {
+    icon?: string,
+    color?: string,
+    href?: string,
+    disabled?: boolean
+}
+
+var { icon = "star", color = "var(--accent-red)", href, disabled } = Astro.props;
+var lightTextColor = "#f1e9e9";
+var darkTextColor = "#181616";
+var textColor = lightTextColor; // Default to light text
+
+if (disabled) {
+    color = "var(--far-bg)"
+}
+
+if (color) {
+    textColor = lightDarkContrast(color, lightTextColor, darkTextColor);
+}
+---
+<button style={color ? `background-color: ${color}`: ""} class={disabled ? "disabled" : ""}>
+    {href ?
+        <a class="button-content" href={href}>
+        <i class="icon">{icon}</i>
+        <div class="text"><slot/></div>
+        </a>
+        :
+        <div class="button-content">
+        <i class="icon text">{icon}</i>
+        <div class="text"><slot/></div>
+        </div>
+    }
+</button>
+
+<style define:vars={{color, textColor}}>
+
+    .button-content {
+        padding: 0.25rem 0.5rem;
+    }
+</style>

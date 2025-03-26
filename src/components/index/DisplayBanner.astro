@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import Button from '@components/ui/buttons/Button.astro';
+interface Props {
+    images: Array<{src: ImageMetadata, alt?: string, width?: number, height?: number}>,
+    title: string,
+    description: string,
+    color?: string,
+    icon?: string,
+    href?: string
+}
+const {images, title, description, color = "var(--accent-red)", icon, href} = Astro.props;
+---
+<section>
+    <div class="banner">
+        <div class="content">
+            <h2 class="text">{title}</h2>
+            <p class="text">{description}</p>
+            {href && <Button icon={icon} href={href}>Learn More</Button>}
+        </div>
+        <div class="images">
+            {images.map((image) => (
+                <Image src={image.src} alt={image.alt ? image.alt : ""} width={image.width} height={image.height} />
+            ))}
+        </div>
+    </div>
+
+    <style>
+        .banner {
+            background: color-mix(in oklab, var(--far-bg-colored) 50%, #2c1f1fCC 50%);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 2rem;
+            height: 300px;
+            margin-top: 4rem;
+            border-bottom: 2px solid var(--accent-red);
+        }
+        .content {
+            max-width: 50%;
+        }
+        .images {
+            display: flex;
+            gap: 1rem;
+            img {
+                width: 300px;
+                height: auto;
+                border: 1rem solid white;
+            }
+        }
+        .banner .content h2.text {
+            font-size: 2rem;
+        }
+    </style>
+</section>

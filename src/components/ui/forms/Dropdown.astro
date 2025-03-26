@@ -1,0 +1,47 @@
+---
+interface Props {
+    id: string,
+    options: Array<{value: string, label: string}>,
+    descriptor?: string,
+    width?: string,
+    fontsize?: number,
+    color?: string,
+    disabled?: boolean
+}
+
+const {id, options, descriptor, width, fontsize = 1, color, disabled} = Astro.props;
+const remFont = fontsize + "rem";
+---
+<div class="dropdown"></div>
+<select id={id} name={id} class="text" disabled={disabled}>
+    <option value="" disabled selected hidden>{descriptor || "Select an option"}</option>
+    {options.map(option => (
+        <option value={option.value}>{option.label}</option>
+    ))}
+</select>
+
+<style define:vars={{remFont, width}}>
+    select {
+        padding: .5rem 1rem;
+        width: var(--width);
+        margin: .5rem 0;
+        border: 1px solid var(--far-bg);
+        border-radius: .75rem;
+        background-color: var(--subtle-bg);
+        font-size: var(--remFont);
+        box-shadow: 0 2px 2px 0 var(--colored-bg);
+        transition: all 0.3s;
+    }
+    select:disabled {
+        background: var(--far-bg);
+    }
+    select:hover {
+        background-color: var(--far-bg);
+    }
+    select:focus {
+        background-color: var(--fg-colored);
+        outline: none;
+        border-radius: .75rem .75rem 0 0;
+    }
+</style>
+

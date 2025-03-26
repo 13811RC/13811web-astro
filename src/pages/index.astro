@@ -1,22 +1,13 @@
 ---
 import Main from "../layouts/Main.astro"
 import Content from "@components/Content.astro"
-import Button from "@ui/Button.astro"
-import InputForm from "@ui/InputForm.astro"
-import BigButton from "@ui/BigButton.astro"
-import SmallButton from "@ui/SmallButton.astro"
-import InputFormSubmit from "@components/ui/InputFormSubmit.astro"
+import DisplayBanner from "@components/index/DisplayBanner.astro"
+import robot from "@images/robot.jpeg"
 ---
 
 <Main>
-    <Content>
+    <DisplayBanner images={[{src: robot}]} title="Test" description="Test"></DisplayBanner>
+    <Content skip>
         <h1 class="text">There will be a banner thing here</h1>
-        <div>
-            <SmallButton icon="rss_feed">small epic button</SmallButton>
-            <Button icon="star" href="/blog" color="#555555">epic button</Button>
-            <BigButton icon="phone" disabled>less epic button</BigButton>
-        </div>
-        <InputForm id="tempForm" width="100%" placeholder="Awesome form component"/>
-        <InputFormSubmit id="submitForm"/>
     </Content>
 </Main>
